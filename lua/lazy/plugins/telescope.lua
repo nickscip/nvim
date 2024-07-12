@@ -15,7 +15,6 @@ return {
 	keymap.set("n", "<leader>ff", ":Telescope find_files<cr>", {desc = "Find files" })
 	keymap.set("n", "<leader>fr", ":Telescope recentfiles<cr>", {desc = "Fuzzy find recent files" })
 	keymap.set("n", "<leader>fg", ":Telescope live_grep<cr>", {desc = "Live grep" })
-	keymap.set("n", "<leader>ft", "<cmd>TodoTelescope<CR>", {desc = "Find TODOs" })
 	keymap.set("n", "<leader>fc", ":Telescope grep_string<cr>", {desc = "Find string under cursor in cwd" })
 	end,
 }

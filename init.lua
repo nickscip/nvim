@@ -7,4 +7,12 @@ vim.api.nvim_set_keymap('n', '<A-k>', ':m .-2<CR>==', { noremap = true })
 vim.api.nvim_set_keymap('v', '<A-j>', ':m \'>+1<CR>gv=gv', { noremap = true })
 vim.api.nvim_set_keymap('v', '<A-k>', ':m \'<-2<CR>gv=gv', { noremap = true })
 
+-- Disabling swapfiles
+vim.opt.swapfile = false
+vim.opt.autoread = true
+vim.api.nvim_create_autocmd({ 'FocusGained', 'BufEnter' }, {
+  pattern = '*',
+  command = 'checktime'
+})
+
 require("lazy.lazy")
