@@ -14,5 +14,10 @@ vim.api.nvim_create_autocmd({ 'FocusGained', 'BufEnter' }, {
   pattern = '*',
   command = 'checktime'
 })
+-- Change tab size depending on file type
+vim.api.nvim_create_autocmd({ 'FileType', 'BufRead', 'BufNewFile' }, {
+  pattern = '*.sql',
+  command = 'setlocal tabstop=2 shiftwidth=2 expandtab'
+})
 
 require("lazy.lazy")
