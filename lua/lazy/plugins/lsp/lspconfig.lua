@@ -78,6 +78,16 @@ return {
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
     end
 
+    -- Show source in diagnostics
+    vim.diagnostic.config({
+      virtual_text = {
+        source = "always",  -- Or "if_many"
+      },
+      float = {
+        source = "always",  -- Or "if_many"
+      },
+    })
+
     mason_lspconfig.setup_handlers({
       -- default handler for installed servers
       function(server_name)
