@@ -83,5 +83,16 @@ return {
                 keymap.set("n", "<leader>hi", function() harpoon:list():select(8) end)
                 keymap.set("n", "<leader>ho", function() harpoon:list():select(9) end)
                 keymap.set("n", "<leader>hp", function() harpoon:list():select(10) end)
+
+                keymap.set("n", "<leader>hsq", function() harpoon:list():replace_at(1) end)
+                keymap.set("n", "<leader>hsw", function() harpoon:list():replace_at(2) end)
+                keymap.set("n", "<leader>hse", function() harpoon:list():replace_at(3) end)
+                keymap.set("n", "<leader>hsr", function() harpoon:list():replace_at(4) end)
+                keymap.set("n", "<leader>hst", function() harpoon:list():replace_at(5) end)
+                keymap.set("n", "<leader>hsy", function() harpoon:list():replace_at(6) end)
+                keymap.set("n", "<leader>hsu", function() harpoon:list():replace_at(7) end)
+                keymap.set("n", "<leader>hsi", function() harpoon:list():replace_at(8) end)
+                keymap.set("n", "<leader>hso", function() harpoon:list():replace_at(9) end)
+                keymap.set("n", "<leader>hsp", function() harpoon:list():replace_at(10) end)
                 end,
 }
