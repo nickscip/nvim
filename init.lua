@@ -31,4 +31,9 @@ vim.api.nvim_create_autocmd({ 'FileType', 'BufRead', 'BufNewFile' }, {
   command = 'setlocal tabstop=4 shiftwidth=4 expandtab'
 })
 
+vim.api.nvim_create_autocmd({ 'FileType', 'BufRead', 'BufNewFile' }, {
+  pattern = '*.java',
+  command = 'setlocal tabstop=4 shiftwidth=4 expandtab'
+})
+
 require("lazy.lazy")
