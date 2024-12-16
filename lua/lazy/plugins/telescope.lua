@@ -12,9 +12,14 @@ return {
 	-- set keymaps
 	local keymap = vim.keymap -- for conciseness
 
-	keymap.set("n", "<leader>ff", ":Telescope find_files<cr>", {desc = "Find files" })
-	keymap.set("n", "<leader>fr", ":Telescope recentfiles<cr>", {desc = "Fuzzy find recent files" })
-	keymap.set("n", "<leader>fg", ":Telescope live_grep<cr>", {desc = "Live grep" })
-	keymap.set("n", "<leader>fc", ":Telescope grep_string<cr>", {desc = "Find string under cursor in cwd" })
+	keymap.set("n", "<leader>ff", require('telescope.builtin').find_files, {desc = "Find files" })
+  keymap.set("n", "<leader>en", function()
+    require('telescope.builtin').find_files {
+      cwd = vim.fn.stdpath("config")
+    }
+  end, {desc = "Find files in nvim config" })
+  keymap.set("n", "<leader>fg", require('telescope.builtin').live_grep, {desc = "Grep in cwd" })
+  keymap.set("n", "<leader>fb", require('telescope.builtin').buffers, {desc = "List buffers" })
+  keymap.set("n", "<leader>fh", require('telescope.builtin').help_tags, {desc = "Find help tags" })
 	end,
 }
