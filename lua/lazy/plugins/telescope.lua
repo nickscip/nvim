@@ -19,6 +19,11 @@ return {
     }
   end, {desc = "Find files in nvim config" })
   keymap.set("n", "<leader>fg", require('telescope.builtin').live_grep, {desc = "Grep in cwd" })
+  keymap.set("n", "<leader>eg", function()
+    require('telescope.builtin').live_grep {
+      cwd = vim.fn.stdpath("config")
+    }
+  end, {desc = "Grep in nvim config" })
   keymap.set("n", "<leader>fb", require('telescope.builtin').buffers, {desc = "List buffers" })
   keymap.set("n", "<leader>fh", require('telescope.builtin').help_tags, {desc = "Find help tags" })
 	end,

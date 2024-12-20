@@ -117,7 +117,9 @@ return {
 				lspconfig["pyright"].setup({
 					capabilities = capabilities,
 					filetypes = { "python" },
-					settings = { python = { analysis = { diagnosticMode = "workspace" } } },
+					settings = { python = {
+            analysis = { diagnosticMode = "workspace" }
+          } },
 				})
 			end,
 			["rust_analyzer"] = function()
