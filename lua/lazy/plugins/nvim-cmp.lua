@@ -3,7 +3,7 @@ return {
   event = "InsertEnter",
   dependencies = {
     "hrsh7th/cmp-buffer", -- source for text in buffer
-    "hrsh7th/cmp-path", -- source for file system paths
+    "hrsh7th/cmp-path",   -- source for file system paths
   },
   config = function()
     local cmp = require("cmp")
@@ -18,14 +18,14 @@ return {
         ["<C-b>"] = cmp.mapping.scroll_docs(-4),
         ["<C-f>"] = cmp.mapping.scroll_docs(4),
         ["<C-Space>"] = cmp.mapping.complete(), -- show completion suggestions
-        ["<C-e>"] = cmp.mapping.abort(), -- close completion window
+        ["<C-e>"] = cmp.mapping.abort(),        -- close completion window
         ["<CR>"] = cmp.mapping.confirm({ select = false }),
       }),
       -- sources for autocompletion
       sources = cmp.config.sources({
-	{ name = "nvim_lsp" }, -- LSP
+        { name = "nvim_lsp" }, -- LSP
         { name = "buffer" }, -- text within current buffer
-        { name = "path" }, -- file system paths
+        { name = "path" },   -- file system paths
       }),
     })
   end,
