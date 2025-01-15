@@ -5,6 +5,7 @@ return {
     { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
     "nvim-tree/nvim-web-devicons",
     "folke/todo-comments.nvim",
+    "debugloop/telescope-undo.nvim",
   },
   config = function()
     local telescope = require('telescope')
@@ -16,6 +17,7 @@ return {
       }
     }
     telescope.load_extension('fzf')
+    require("telescope").load_extension('undo')
     -- set keymaps
     local keymap = vim.keymap -- for conciseness
 
@@ -33,5 +35,6 @@ return {
     end, { desc = "Grep in nvim config" })
     keymap.set("n", "<leader>fb", require('telescope.builtin').buffers, { desc = "List buffers" })
     keymap.set("n", "<leader>fh", require('telescope.builtin').help_tags, { desc = "Find help tags" })
+    keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>", { desc = "Undo history" })
   end,
 }
