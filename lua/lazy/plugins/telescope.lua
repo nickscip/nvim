@@ -36,5 +36,6 @@ return {
     keymap.set("n", "<leader>fb", require('telescope.builtin').buffers, { desc = "List buffers" })
     keymap.set("n", "<leader>fh", require('telescope.builtin').help_tags, { desc = "Find help tags" })
     keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>", { desc = "Undo history" })
+    keymap.set("n", "<leader>ee", ":Ex<cr>", { desc = "Open file explorer" })
   end,
 }
