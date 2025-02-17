@@ -29,6 +29,7 @@ return {
       ensure_installed = {
         "pyright",
       },
+      automatic_installation = true,
     })
   end,
 }
