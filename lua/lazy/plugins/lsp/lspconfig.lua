@@ -98,10 +98,10 @@ return {
     -- Show source in diagnostics
     vim.diagnostic.config({
       virtual_text = {
-        source = "always", -- Or "if_many"
+        source = true,
       },
       float = {
-        source = "always", -- Or "if_many"
+        source = true,
       },
     })
 
