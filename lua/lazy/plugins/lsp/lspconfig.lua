@@ -136,7 +136,7 @@ return {
           filetypes = { "python" },
           settings = {
             python = {
-              analysis = { diagnosticMode = "workspace" }
+              analysis = { diagnosticMode = "workspace", autoSearchPaths = true },
             }
           },
         })
