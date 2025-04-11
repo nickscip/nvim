@@ -86,7 +86,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 
--- Show source in diagnostics
+-- Configure diagnostic view
 vim.diagnostic.config({
   virtual_text = {
     source = true,
@@ -94,6 +94,7 @@ vim.diagnostic.config({
   float = {
     source = true,
   },
+  virtual_lines = true,
 })
 
 -- Format on save
