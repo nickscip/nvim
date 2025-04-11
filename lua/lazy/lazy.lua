@@ -21,7 +21,7 @@ end
 vim.opt.rtp:prepend(lazypath) -- rtp is an alias for runtimepath
 vim.opt.undofile = true       -- save undo history between sessions
 
-require("lazy").setup({ { import = "lazy.plugins" }, { import = "lazy.plugins.lsp" } }, {
+require("lazy").setup({ { import = "lazy.plugins" }, }, {
   checker = {
     enabled = true,
     notify = false,
@@ -30,3 +30,4 @@ require("lazy").setup({ { import = "lazy.plugins" }, { import = "lazy.plugins.ls
     notify = false,
   },
 })
+
