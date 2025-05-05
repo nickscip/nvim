@@ -34,6 +34,7 @@ vim.api.nvim_create_autocmd({ 'FileType', 'BufRead', 'BufNewFile' }, {
   command = 'setlocal tabstop=4 shiftwidth=4 expandtab'
 })
 
+-- Set up Copilot accept suggestion with Tab
 vim.keymap.set("i", '<Tab>', function()
   if require("copilot.suggestion").is_visible() then
     require("copilot.suggestion").accept()
