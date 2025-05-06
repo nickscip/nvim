@@ -2,6 +2,13 @@ return {
   'nvim-lualine/lualine.nvim',
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   config = function()
+
+    local function cwd_and_filename()
+      local dir = vim.fn.fnamemodify(vim.fn.getcwd(), ":t") -- e.g., "myproject"
+      local file = vim.fn.expand("%:t")                      -- current buffer's filename
+      return dir .. " // " .. (file ~= "" and file or "[No Name]")
+    end
+
     local lualine = require('lualine')
     lualine.setup({
       options = {
@@ -26,7 +33,7 @@ return {
       sections = {
         lualine_a = { 'mode' },
         lualine_b = { 'branch', 'diff', 'diagnostics' },
-        lualine_c = { 'filename' },
+        lualine_c = { cwd_and_filename },
         lualine_x = { 'encoding', 'fileformat', 'filetype' },
         lualine_y = { 'progress' },
         lualine_z = { 'location' }
@@ -46,3 +53,4 @@ return {
     })
   end,
 }
+
