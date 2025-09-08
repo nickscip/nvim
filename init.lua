@@ -45,6 +45,9 @@ end, {
   silent = true,
 })
 
+vim.keymap.set("n", "<leader>h", "<cmd>cnext<CR>zz", { desc = "Forward qfixlist" })
+vim.keymap.set("n", "<leader>;", "<cmd>cprev<CR>zz", { desc = "Backward qfixlist" })
+
 -- Initialize Lazy
 require("lazy.lazy")
 
