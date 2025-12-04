@@ -33,7 +33,7 @@ return {
           },
         },
         virtualtext = {
-          auto_trigger_ft = { 'python', 'lua', 'typescript' },
+          auto_trigger_ft = {},
           keymap = {
             -- accept whole completion
             accept = '<A-A>',
