@@ -8,7 +8,7 @@ return {
           gemini = {
             model = 'gemini-2.0-flash',
             stream = true,
-            api_key = 'GEMINI_API_KEY',
+            api_key = 'MINUET_GEMINI_API_KEY',
             end_point = 'https://generativelanguage.googleapis.com/v1beta/models',
             optional = {
               generationConfig = {
