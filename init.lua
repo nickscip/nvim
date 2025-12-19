@@ -2,8 +2,9 @@
 -- Config Reference: https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
 vim.lsp.enable({
   "luals",
-  "pyright",
+  -- "pyright",
   "ruff",
+  "ty"
 })
 
 -- Vim Settings
