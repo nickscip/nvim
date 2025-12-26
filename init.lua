@@ -4,7 +4,8 @@ vim.lsp.enable({
   "luals",
   -- "pyright",
   "ruff",
-  "ty"
+  "ty",
+  "rust-analyzer"
 })
 
 -- Vim Settings
@@ -77,6 +78,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     opts.desc = "Show LSP type definitions"
     keymap.set("n", "<leader>gt", "<cmd>Telescope lsp_type_definitions<CR>", opts) -- show lsp type definitions
+
+    opts.desc = "Grep string under cursor"
+    keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<CR>", opts) -- show lsp type definitions
 
     opts.desc = "See available code actions"
     keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts) -- see available code actions, in visual mode will apply to selection
