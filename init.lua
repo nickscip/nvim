@@ -50,6 +50,20 @@ end, {
 vim.keymap.set("n", "<leader>h", "<cmd>cnext<CR>zz", { desc = "Forward qfixlist" })
 vim.keymap.set("n", "<leader>;", "<cmd>cprev<CR>zz", { desc = "Backward qfixlist" })
 
+-- Copy file path to clipboard
+vim.keymap.set("n", "<C-g>", function()
+  local path = vim.fn.expand("%:p")
+  vim.fn.setreg("+", path)
+  print(path)
+end, { desc = "Copy absolute file path to clipboard" })
+
+vim.keymap.set("n", "<C-S-g>", function()
+  local name = vim.fn.expand("%:t")
+  vim.fn.setreg("+", name)
+  print(name)
+end, { desc = "Copy filename to clipboard" })
+vim.keymap.set("n", "<leader>ls", "<cmd>LspInfo<CR>", { desc = "Show LSP info" })
+
 -- Initialize Lazy
 require("lazy.lazy")
 
