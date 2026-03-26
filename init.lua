@@ -64,8 +64,28 @@ vim.keymap.set("n", "<C-S-g>", function()
 end, { desc = "Copy filename to clipboard" })
 vim.keymap.set("n", "<leader>ls", "<cmd>LspInfo<CR>", { desc = "Show LSP info" })
 
+-- Oil sorting
+vim.keymap.set("n", "<leader>Os", function()
+  require("oil").set_sort({ { "mtime", "desc" }, { "name", "asc" } })
+end, { desc = "Sort Oil buffer by date (desc)" })
+
+-- Detect macOS system appearance
+local function is_dark_mode()
+  local handle = io.popen("defaults read -g AppleInterfaceStyle 2>/dev/null")
+  if handle then
+    local result = handle:read("*a")
+    handle:close()
+    return result:find("Dark") ~= nil
+  end
+  return false
+end
+
+vim.g.is_dark_mode = is_dark_mode()
+vim.o.background = vim.g.is_dark_mode and "dark" or "light"
+
 -- Initialize Lazy
 require("lazy.lazy")
+
 
 
 -- Telescope Keybinds
