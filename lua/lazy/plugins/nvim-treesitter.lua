@@ -1,43 +1,71 @@
 return {
   {
+    -- `main` branch: required for Neovim 0.11+. The old `master` branch's
+    -- injection queries crash core treesitter ("attempt to call method 'range'").
     "nvim-treesitter/nvim-treesitter",
-    event = { "BufReadPre", "BufNewFile" },
+    branch = "main",
+    lazy = false,
     build = ":TSUpdate",
-    dependencies = {
-      "windwp/nvim-ts-autotag",
-    },
     config = function()
-      -- import nvim-treesitter plugin
-      local treesitter = require("nvim-treesitter.configs")
+      -- Idempotent: skips parsers that are already installed.
+      require("nvim-treesitter").install({
+        "bash",
+        "c",
+        "css",
+        "csv",
+        "dockerfile",
+        "fish",
+        "git_config",
+        "gitignore",
+        "go",
+        "html",
+        "htmldjango",
+        "ini",
+        "javascript",
+        "json",
+        "lua",
+        "make",
+        "markdown",
+        "markdown_inline",
+        "pem",
+        "python",
+        "query",
+        "requirements",
+        "rust",
+        "scss",
+        "ssh_config",
+        "svelte",
+        "terraform",
+        "toml",
+        "tsx",
+        "typescript",
+        "vim",
+        "vimdoc",
+        "xml",
+        "yaml",
+      })
 
-      -- configure treesitter
-      -- Harmless Missing required fields warning
-      treesitter.setup({ -- enable syntax highlighting
-        highlight = {
-          enable = true,
-        },
-        -- enable indentation
-        indent = { enable = true },
-        -- enable autotagging (w/ nvim-ts-autotag plugin)
-        autotag = { enable = true },
-        -- ensure these language parsers are installed
-        ensure_installed = {
-          "lua",
-          "markdown",
-          "python",
-        },
-        -- auto install above language parsers
-        auto_install = true,
-        incremental_selection = {
-          enable = true,
-          keymaps = {
-            init_selection = "<C-space>",
-            node_incremental = "<C-space>",
-            scope_incremental = false,
-            node_decremental = "<bs>",
-          },
-        },
+      -- `main` has no global setup() for highlight/indent; enable per buffer.
+      vim.api.nvim_create_autocmd("FileType", {
+        group = vim.api.nvim_create_augroup("UserTreesitter", {}),
+        callback = function(args)
+          local ft = vim.bo[args.buf].filetype
+          local lang = vim.treesitter.language.get_lang(ft) or ft
+          if not pcall(vim.treesitter.start, args.buf, lang) then
+            return
+          end
+          -- Only override indent when the language ships an indents query;
+          -- otherwise keep Neovim's built-in indentexpr.
+          if vim.treesitter.query.get(lang, "indents") then
+            vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+          end
+        end,
       })
     end,
+  },
+  {
+    "windwp/nvim-ts-autotag",
+    event = { "BufReadPre", "BufNewFile" },
+    opts = {},
   },
 }
