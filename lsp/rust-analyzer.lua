@@ -1,4 +1,4 @@
-vim.lsp.config['rust-analyzer'] = {
+return {
   -- Command and arguments to start the server.
   cmd = { "rust-analyzer" },
 

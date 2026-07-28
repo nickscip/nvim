@@ -1,4 +1,4 @@
-vim.lsp.config['luals'] = {
+return {
   -- Command and arguments to start the server.
   cmd = { 'lua-language-server' },
 

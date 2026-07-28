@@ -1,4 +1,4 @@
-vim.lsp.config['pyright'] = {
+return {
   -- Command and arguments to start the server.
   cmd = { "pyright-langserver", "--stdio" },
 

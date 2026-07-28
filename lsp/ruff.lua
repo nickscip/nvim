@@ -1,4 +1,4 @@
-vim.lsp.config['ruff'] = {
+return {
 
   cmd = { "ruff", "server" },
 

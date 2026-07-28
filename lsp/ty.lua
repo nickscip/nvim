@@ -1,4 +1,4 @@
-vim.lsp.config['ty'] = {
+return {
   -- Command and arguments to start the server.
   cmd = { "ty", "server" },
 
