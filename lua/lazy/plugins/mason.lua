@@ -17,7 +17,11 @@ return {
     -- import mason-lspconfig
     local mason_lspconfig = require("mason-lspconfig")
 
-    -- local mason_tool_installer = require("mason-tool-installer")
+    -- LSP servers to install with :MasonToolsInstall (bootstrap.sh runs it on a new machine)
+    require("mason-tool-installer").setup({
+      ensure_installed = { "lua-language-server", "ruff", "rust-analyzer", "ty", "vtsls" },
+      run_on_start = false,
+    })
 
     -- enable mason and configure icons
     mason.setup({
