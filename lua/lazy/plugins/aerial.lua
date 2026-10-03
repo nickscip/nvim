@@ -1,5 +1,12 @@
 return {
   'stevearc/aerial.nvim',
+  -- Load with the first file so on_attach still sets the buffer-local { / } maps on every buffer
+  event = { "BufReadPost", "BufNewFile" },
+  cmd = {
+    "AerialToggle", "AerialOpen", "AerialOpenAll", "AerialClose", "AerialCloseAll", "AerialNext",
+    "AerialPrev", "AerialGo", "AerialInfo", "AerialNavToggle", "AerialNavOpen", "AerialNavClose",
+  },
+  keys = { "<leader>a" },
   opts = {
     layout = {
       default_direction = "left",

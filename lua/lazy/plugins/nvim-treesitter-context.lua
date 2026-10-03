@@ -1,5 +1,7 @@
 return {
   "nvim-treesitter/nvim-treesitter-context",
+  event = { "BufReadPost", "BufNewFile" },
+  cmd = "TSContext",
   config = function()
     local ts_context = require("treesitter-context")
     ts_context.setup({

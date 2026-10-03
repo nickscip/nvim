@@ -28,5 +28,8 @@ return {
         { name = "path" },   -- file system paths
       }),
     })
+
+    -- markview only registers its cmp source at VimEnter if cmp is already loaded; cmp now loads later
+    pcall(function() require("markview.integrations").register_cmp_source() end)
   end,
 }

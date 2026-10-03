@@ -1,6 +1,9 @@
 return {
   {
     'milanglacier/minuet-ai.nvim',
+    -- Completion-only plugin; loading it at startup also dragged nvim-cmp in early
+    event = "InsertEnter",
+    cmd = "Minuet",
     config = function()
       require('minuet').setup {
         provider = 'gemini',

@@ -1,3 +1,12 @@
+-- Disable unused remote-plugin providers (the python3 probe alone cost ~70ms on the first .py file)
+vim.g.loaded_python3_provider = 0
+vim.g.loaded_node_provider = 0
+vim.g.loaded_perl_provider = 0
+vim.g.loaded_ruby_provider = 0
+
+-- Mason is lazy-loaded, so put its binaries (lua-language-server, ruff, ty, ...) on PATH up front
+vim.env.PATH = vim.fn.stdpath("data") .. "/mason/bin:" .. vim.env.PATH
+
 -- LSP Setup
 -- Config Reference: https://github.com/neovim/nvim-lspconfig/blob/master/doc/configs.md
 vim.lsp.enable({
@@ -5,7 +14,8 @@ vim.lsp.enable({
   -- "pyright",
   "ruff",
   "ty",
-  "rust-analyzer"
+  "rust-analyzer",
+  "vtsls",
 })
 
 -- Vim Settings

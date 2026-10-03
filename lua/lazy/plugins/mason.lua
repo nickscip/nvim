@@ -1,5 +1,11 @@
 return {
   "williamboman/mason.nvim",
+  -- Lazy-loaded: init.lua puts mason/bin on PATH, so LSP servers resolve without loading mason.
+  cmd = {
+    "Mason", "MasonInstall", "MasonUninstall", "MasonUninstallAll", "MasonLog", "MasonUpdate",
+    "LspInstall", "LspUninstall", -- mason-lspconfig
+    "MasonToolsInstall", "MasonToolsInstallSync", "MasonToolsUpdate", "MasonToolsUpdateSync", "MasonToolsClean", -- mason-tool-installer
+  },
   dependencies = {
     "williamboman/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
@@ -30,6 +36,8 @@ return {
         "ruff",
       },
       automatic_installation = true,
+      -- Servers are enabled explicitly via vim.lsp.enable() in init.lua
+      automatic_enable = false,
     })
   end,
 }
